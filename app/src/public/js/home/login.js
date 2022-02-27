@@ -14,8 +14,8 @@ function login() {
         psword: psword.value,
     };
 
-    console.log(req);
-    console.log(JSON.stringify(req));
+    // console.log(req.id, req.psword);
+    // console.log(req, JSON.stringify(req));
 
     // 서버에 전달
     fetch("/login", { // /login 경로에 전달
@@ -24,5 +24,7 @@ function login() {
             "Content-Type": "application/json",
         },
         body: JSON.stringify(req), // 오브젝트를 JSON으로 변경하여 서버에 전달 
-    });
+    })
+    .then((res) => res.json()) // promise 타입 변환
+    .then(console.log); // fetch에 대한 응답 처리
 }
